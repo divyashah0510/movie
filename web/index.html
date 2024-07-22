@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TvFlix</title>
+    <!----
+        - Meta tags
+    ---->
+    <meta name="title" content="TvFlix" />
+    <!----
+        - favicon link
+    ---->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+    <meta
+      name="description"
+      content="Tvflix is a popular movie app made by codewithsadee."
+    />
+    <!----
+        - custom css link
+    --->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!----
+        - google font links
+    ---->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!----
+        - custom js links
+    ---->
+    <script src="./assets/js/global.js" defer></script>
+    <script src="./assets/js/index.js" type="module"></script>
+  </head>
+  <body>
+    <!----
+        - HEADER
+    ---->
+    <header class="header">
+      <a href="./index.html" class="logo">
+        <img
+          src="./assets/images/logo.svg"
+          alt="TvFlix"
+          width="140"
+          height="32"
+        />
+      </a>
+      <div class="search-box" search-box>
+        <div class="search-wrapper" search-wrapper>
+          <input
+            type="text"
+            class="search-field"
+            name="search"
+            placeholder="Search any movies..."
+            aria-label="search movies"
+            search-field
+            autocomplete="off"
+          />
+          <img
+            src="./assets/images/search.png"
+            alt="Search"
+            width="24"
+            height="24"
+            class="leading-icon"
+          />
+        </div>
+
+        <button class="search-btn" search-toggler>
+          <img
+            src="./assets/images/close.png"
+            alt="close search box"
+            width="24"
+            height="24"
+          />
+        </button>
+      </div>
+
+      <button class="search-btn" search-toggler menu-close>
+        <img
+          src="./assets/images/search.png"
+          alt="close search box"
+          width="24"
+          height="24"
+        />
+      </button>
+      <button class="menu-btn" menu-btn menu-toggler>
+        <img
+          src="./assets/images/menu.png"
+          alt="open menu"
+          width="24"
+          height="24"
+          class="menu"
+        />
+        <img
+          src="./assets/images/menu-close.png"
+          alt="close menu"
+          width="24"
+          height="24"
+          class="close"
+        />
+      </button>
+    </header>
+
+
+    
+  </body>
+</html>
