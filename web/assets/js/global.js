@@ -23,3 +23,9 @@ addEventOnElments(searchToggler,"click",()=>{
 const getMovieDetail = (movieId) => {
     window.localStorage.setItem("movieId", String(movieId));
 }
+
+const getMovieList = (urlParam,genreName) => {
+    window.localStorage.setItem("genreName", genreName);
+    window.localStorage.setItem("urlParam", urlParam);
+
+}
