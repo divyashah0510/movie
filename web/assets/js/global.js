@@ -18,3 +18,8 @@ const searchToggler = document.querySelectorAll("[search-toggler]");
 addEventOnElments(searchToggler,"click",()=>{
     searchBox.classList.toggle("active");
 })
+
+
+const getMovieDetail = (movieId) => {
+    window.localStorage.setItem("movieId", String(movieId));
+}

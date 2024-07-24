@@ -33,6 +33,7 @@ export function createMovieCard(movie) {
       href="./detail.html"
       class="card-btn"
       title="${title}"
+      onclick="getMovieDetail(${id})"
     ></a>
   `;
   return card;
