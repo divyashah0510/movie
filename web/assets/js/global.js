@@ -3,7 +3,9 @@
 // Add event on mulitple elements
 
 const addEventOnElments = (elements, eventType, callback) => {
-    for (const elem of elements) elem.addEventListener(eventType, callback);
+    for (const elem of elements) {
+        elem.addEventListener(eventType, callback);
+    }
 };
 
 
