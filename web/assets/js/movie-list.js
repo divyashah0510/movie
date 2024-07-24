@@ -13,79 +13,57 @@ const pageContent = document.querySelector("[page-content]");
 
 sidebar();
 
-fetchDataFromServer(
-  `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=popularity.desc&include_adult=true&page=${currentPage}&${urlParam}`,
-  ({ results: movieList, total_pages }) => {
+function generateFetchUrl(page, urlParam) {
+  return `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=popularity.desc&include_adult=true&page=${page}&${urlParam}`;
+}
+
+function createMoviesListSection(genreName) {
+  const section = document.createElement("section");
+  section.classList.add("movies-list", "genre-list");
+  section.ariaLabel = `${genreName} Movies`;
+  section.innerHTML = `
+    <div class="title-wrapper">
+      <h1 class="heading">All ${genreName} Movies</h1>
+    </div>
+    <div class="grid-list"></div>
+    <button class="btn load-more" load-more>Load More</button>
+  `;
+  return section;
+}
+
+function appendMoviesToSection(movieList, section) {
+  const gridList = section.querySelector(".grid-list");
+  for (const movie of movieList) {
+    const movieCard = createMovieCard(movie);
+    gridList.appendChild(movieCard);
+  }
+}
+
+function handleLoadMoreClick(event, section) {
+  if (currentPage >= totalPages) {
+    event.target.style.display = "none";
+    return;
+  }
+  currentPage++;
+  event.target.classList.add("loading");
+  fetchDataFromServer(generateFetchUrl(currentPage, urlParam), ({ results: movieList }) => {
+    event.target.classList.remove("loading");
+    appendMoviesToSection(movieList, section);
+  });
+}
+
+function initializeMovieList() {
+  fetchDataFromServer(generateFetchUrl(currentPage, urlParam), ({ results: movieList, total_pages }) => {
     totalPages = total_pages;
     document.title = `${genreName} Movies - TvFlix`;
-    const moviesListElem = document.createElement("section");
-    moviesListElem.classList.add("movies-list", "genre-list");
-    moviesListElem.ariaLabel = `${genreName} Movies`;
-    moviesListElem.innerHTML = `
-      <div class="title-wrapper">
-        <h1 class="heading">All ${genreName} Movies</h1>
-      </div>
-      <div class="grid-list">
-        <div class="movie-card">
-          <figure class="poster-box card-banner">
-            <img
-              src="./assets/images/slider-control.jpg"
-              alt="Puss in Boots: The Last Wish"
-              class="img-cover"
-            />
-          </figure>
-          <h4 class="title">Puss in Boots: The Last Wish</h4>
-          <div class="meta-list">
-            <div class="meta-item">
-              <img
-                src="./assets/images/star.png"
-                alt="rating"
-                loading="lazy"
-                width="20"
-                height="20"
-              />
-              <span class="span">7.5</span>
-            </div>
-            <div class="card-badge">2022</div>
-          </div>
-          <a
-            href="./detail.html"
-            class="card-btn"
-            title="Puss in the Boots: The Last Wish"
-          ></a>
-        </div>
-      </div>
-      <button class="btn load-more" load-more >Load More</button>
-    `;
+    const moviesListSection = createMoviesListSection(genreName);
+    appendMoviesToSection(movieList, moviesListSection);
+    pageContent.appendChild(moviesListSection);
+    document.querySelector("[load-more]").addEventListener("click", function(event) {
+      handleLoadMoreClick(event, moviesListSection);
+    });
+  });
+}
 
-    for (const movie of movieList) {
-      const movieCard = createMovieCard(movie);
-      moviesListElem.querySelector(".grid-list").appendChild(movieCard);
-    }
-    pageContent.appendChild(moviesListElem);
-
-    document
-      .querySelector("[load-more]")
-      .addEventListener("click", function () {
-        if (currentPage >= totalPages) {
-          this.style.display = "none";
-          return;
-        }
-        currentPage++;
-        this.classList.add("loading");
-        fetchDataFromServer(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=popularity.desc&include_adult=true&page=${currentPage}&${urlParam}`,
-          ({ results: movieList }) => {
-            this.classList.remove("loading");
-            for (const movie of movieList) {
-              const movieCard = createMovieCard(movie);
-              moviesListElem.querySelector(".grid-list").appendChild(movieCard);
-            }
-          }
-        );
-      });
-  }
-);
-
-
+initializeMovieList();
 search();
