@@ -55,7 +55,7 @@ export function sidebar() {
     const sidebarBtn = document.querySelector("[menu-btn]");
     const sidebarTogglers = document.querySelectorAll("[menu-toggler]");
     const sidebarClose = document.querySelectorAll("[menu-close]");
-    const overlay =document.querySelector("[overlay]");
+    const overlay = document.querySelector("[overlay]");
     addEventOnElments(sidebarTogglers, "click", () => {
       sidebar.classList.toggle("active");
       sidebarBtn.classList.toggle("active");
