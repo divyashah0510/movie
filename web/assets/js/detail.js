@@ -45,7 +45,7 @@ const filterVideos = (videoList) => {
 };
 
 fetchDataFromServer(
-  `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}&append_to_response=casts,videos,images,releases`,
+  `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}&append_to_response=casts,videos,images,releases&include_adult=true`,
   function (movie) {
     const {
       backdrop_path,
@@ -144,7 +144,7 @@ fetchDataFromServer(
 
     // recommendations and similar movies
     fetchDataFromServer(
-      `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1`,
+      `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}&page=1&include_adult=true`,
       addSuggestedMovies
     );
   }
