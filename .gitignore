@@ -8,3 +8,6 @@ build/
 
 # test
 test/
+
+# env file
+.env
