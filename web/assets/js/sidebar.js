@@ -49,7 +49,7 @@ export function sidebar() {
       >
     </div>
     <div class="sidebar-footer">
-      <p class="copyright">CopyRight 2024 <a href="#">divyashah</a></p>
+      <p class="copyright">CopyRight 2024 <a href="https://github.com/divyashah0510/" target="_blank" >divyashah</a></p>
       <img
         src="./assets/images/tmdb-logo.png"
         alt="the movie database logo"

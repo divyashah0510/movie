@@ -2,3 +2,9 @@ build/
 private
 
 /web/assets/js/api.js
+
+# build
+build/
+
+# test
+test/
