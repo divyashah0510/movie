@@ -6,7 +6,7 @@ export function sidebar() {
   const genreList = {};
 
   fetchDataFromServer(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}&include_adult=true`,
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`,
     function ({ genres }) {
       for (const { id, name } of genres) {
         genreList[id] = name;

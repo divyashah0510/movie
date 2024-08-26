@@ -14,7 +14,7 @@ const pageContent = document.querySelector("[page-content]");
 sidebar();
 
 function generateFetchUrl(page, urlParam) {
-  return `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=popularity.desc&include_adult=true&page=${page}&${urlParam}`;
+  return `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=popularity.desc&page=${page}&${urlParam}`;
 }
 
 function createMoviesListSection(genreName) {

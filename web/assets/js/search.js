@@ -20,7 +20,7 @@ export const search = () => {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
       fetchDataFromServer(
-        `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${searchField.value}&page=1&include_adult=true`,
+        `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${searchField.value}&page=1`,
         ({ results: movieList }) => {
           searchWrapper.classList.remove("searching");
           searchResultModal.classList.add("active");
